@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<form action="" method="post" style="width: 50%; margin: auto;">
+    <h1 class="mt-5">Update Your Profile</h1>
+    
+    {% csrf_token %}
+
+    <!-- {{form | crispy}} -->
+
+    {% for fm in form %}
+    {{fm.label_tag}}
+    {{fm}}
+    {{fm.errors}}
+    {% endfor %} 
+    <br>
+
+    <button class="btn btn-primary">Submit</button>
+    <a href="{% url 'pass_change' %}" class="btn btn-success mx-3">Change Your Password</a>
+    <a href="{% url 'pass_change_without' %}" class="btn btn-success">Change Your Password without old password</a>
+</form>
+{% endblock %}
